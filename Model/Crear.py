@@ -51,11 +51,6 @@ def guardar_archivo(ruta, contenido, flag_anexar_contenido):
 
 def leer_matriz(ruta):
     """
-    Lee una matriz de un archivo de texto.
-
-    Parámetros:
-    ruta (str): Ruta del archivo que contiene la matriz.
-
     Retorna:
     list: La matriz leída desde el archivo.
     """
