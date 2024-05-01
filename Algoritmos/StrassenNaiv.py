@@ -145,10 +145,10 @@ def strassen_naiv_step(A, B, Result, N, m):
 
     else:
         # Si N no cumple las condiciones, usa un método estándar (Naive Standard)
-        naiv_standard(A, B, Result, N, N, N)
+        naivStandard(A, B, Result, N, N, N)
 
 
-def naiv_standard(matrizA, matrizB, matrizC, N, P, M):
+def naivStandard(matrizA, matrizB, matrizC, N, P, M):
     # Recorre cada fila de la matriz A
     for i in range(N):
         # Recorre cada columna de la matriz B

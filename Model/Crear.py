@@ -33,7 +33,7 @@ def guardar_matrices(matriz, numero_matriz):
     numero_matriz (str): Nombre para el archivo de la matriz.
     """
     matriz_escrita = "\n".join([" ".join(map(str, fila)) for fila in matriz])
-    guardar_archivo(f"C:/ALL/Codigos/WS_Python/WS/ProyectoAnalisis/Persistencia/matriz {numero_matriz}.txt",
+    guardar_archivo(f"C:/ALL/Codigos/WS_Python/WS/Metodos_de_multiplicacion/Persistencia/matriz {numero_matriz}.txt",
                     matriz_escrita, False)
 
 
