@@ -1,21 +1,4 @@
 def NaivLoopUnrollingFour(A, B, Result, N, P, M):
-    """
-    Multiplica dos matrices utilizando el algoritmo Naive Loop Unrolling Four.
-
-    Args:
-    - A (list): Matriz A de tamaño NxP.
-    - B (list): Matriz B de tamaño PxM.
-    - Result (list): Matriz resultante de tamaño NxM para almacenar el resultado de la multiplicación.
-    - N (int): Número de filas de la matriz A y de la matriz Result.
-    - P (int): Número de columnas de la matriz A y número de filas de la matriz B.
-    - M (int): Número de columnas de la matriz B y de la matriz Result.
-
-    Returns:
-    - None: La función modifica la matriz Result directamente.
-
-    Raises:
-    - ValueError: Si las dimensiones de las matrices no son compatibles para la multiplicación.
-    """
     i, j, k = 0, 0, 0  # Inicializar variables de iteración
     aux = 0.0  # Variable auxiliar para almacenar el resultado parcial de la multiplicación
 
@@ -60,3 +43,4 @@ def NaivLoopUnrollingFour(A, B, Result, N, P, M):
                     aux += A[i][k] * B[k][j] + A[i][k + 1] * B[k + 1][j] + A[i][k + 2] * B[k + 2][j] + A[i][k + 3] * B[k + 3][j]
                 Result[i][j] = aux + A[i][PP] * B[PP][j] + A[i][PPP] * B[PPP][j] + A[i][PPPP] * B[PPPP][j]
 
+    return Result

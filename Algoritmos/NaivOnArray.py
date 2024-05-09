@@ -1,20 +1,12 @@
-def NaivOnArray(matrizA, matrizB, matrizC, N, P, M):
-    """
-    Realiza la multiplicación de matrices utilizando el algoritmo de multiplicación
-    ingenua (naive) con desenrollado de bucles en Python.
 
-    Parámetros:
-    matrizA (list): Matriz A de dimensiones NxP.
-    matrizB (list): Matriz B de dimensiones PxM.
-    matrizC (list): Matriz C donde se almacenará el resultado de la multiplicación.
-    N (int): Número de filas de la matriz A y la matriz C.
-    P (int): Número de columnas de la matriz A y número de filas de la matriz B.
-    M (int): Número de columnas de la matriz B y la matriz C.
-    """
-    for i in range(N):  # Recorre las filas de la matriz A y C
-        for j in range(M):  # Recorre las columnas de la matriz B y C
-            matrizC[i][j] = 0.0  # Inicializa el elemento (i, j) de la matriz C a 0
-            for k in range(P):  # Recorre las columnas de la matriz A y las filas de la matriz B
-                matrizC[i][j] += matrizA[i][k] * matrizB[k][j]  # Multiplica y suma los elementos correspondientes
-
-
+def NaivOnArray_(matrizA, matrizB, matrizC, N, P, M):
+    # Bucle externo que recorre las filas de la matriz C
+    for i in range(N):
+        # Bucle interno que recorre las columnas de la matriz C
+        for j in range(M):
+            # Inicializa el valor de la celda (i, j) en la matriz C a 0.0
+            matrizC[i][j] = 0.0
+            # Bucle interno que realiza la multiplicación y suma de elementos de la matriz A y B
+            for k in range(P):
+                matrizC[i][j] += matrizA[i][k] * matrizB[k][j]
+    return matrizC

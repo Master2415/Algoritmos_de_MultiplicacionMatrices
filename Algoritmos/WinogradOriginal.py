@@ -42,3 +42,5 @@ def WinogradOriginal(A, B, Result, N, P, M):
     # Liberar memoria al finalizar
     y = None
     z = None
+
+    return Result

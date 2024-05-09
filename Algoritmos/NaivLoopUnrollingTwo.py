@@ -1,5 +1,5 @@
 def NaivLoopUnrollingTwo(matrizA, matrizB, matrizC, N, P, M):
-     # Multiplicación de matrices utilizando el algoritmo Naive Loop Unrolling Two
+    # Multiplicación de matrices utilizando el algoritmo Naive Loop Unrolling Two
     if P % 2 == 0:  # Verificar si el número de columnas de la matriz B es par
         for i in range(N):  # Iterar sobre las filas de la matriz A y matriz C
             for j in range(M):  # Iterar sobre las columnas de la matriz B y matriz C
@@ -19,3 +19,4 @@ def NaivLoopUnrollingTwo(matrizA, matrizB, matrizC, N, P, M):
                 # Sumar el producto de la última columna impar de A y la última columna de B
                 matrizC[i][j] = aux + matrizA[i][PP] * matrizB[PP][j]
 
+    return matrizC
