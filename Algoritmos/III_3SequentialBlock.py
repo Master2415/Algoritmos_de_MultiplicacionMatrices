@@ -1,23 +1,22 @@
-def lll_3_sequential_block(matrizA, matrizB, size):
-    """
-    Realiza la multiplicación de matrices de forma secuencial utilizando bloques.
+import math
+import numpy as np
 
-    Parameters:
-    - matrizA (list of lists): Matriz de tamaño 'size' x 'size'.
-    - matrizB (list of lists): Matriz de tamaño 'size' x 'size'.
-    - size (int): Tamaño de la matriz cuadrada.
-    """
-    # Calcula el tamaño de bloque
-    bsize = int(size ** 0.5)
-    # Crea la matriz de resultados
-    matrizResultado = [[0.0] * size for _ in range(size)]
-    # Itera sobre los bloques de la matriz
+
+def lll_3SequentialBlock(matrizA, matrizB, size):
+    # Calcula el tamaño de bloque basado en la raíz cuadrada del tamaño total.
+    bsize = int(math.sqrt(size))
+    # Crea una matriz para almacenar el resultado de la multiplicación.
+    matrizResultado = np.zeros((size, size))
+
+    # Bucle externo para recorrer la matriz por bloques.
     for i1 in range(0, size, bsize):
         for j1 in range(0, size, bsize):
             for k1 in range(0, size, bsize):
-                # Itera dentro de cada bloque
+                # Bucle interno para multiplicar los bloques.
                 for i in range(i1, min(i1 + bsize, size)):
                     for j in range(j1, min(j1 + bsize, size)):
                         for k in range(k1, min(k1 + bsize, size)):
-                            # Calcula la multiplicación de matrices en cada elemento
+                            # Multiplica los elementos de los bloques y suma al resultado.
                             matrizResultado[i][j] += matrizA[i][k] * matrizB[k][j]
+    return matrizResultado
+

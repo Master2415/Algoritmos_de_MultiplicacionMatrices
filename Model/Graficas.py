@@ -36,9 +36,36 @@ def generarGrafica():
 
 def ejecutar_metodo(metodo):
     try:
-        if metodo == "III.3 Sequential block":
+        if metodo == "NaivOnArray":
+            Metodos_Accion.x_naiv_on_array()
+        elif metodo == "NaivLoopUnrollingTwo":
+            Metodos_Accion.x_NaivLoopUnrollingTwo()
+        elif metodo == "NaivLoopUnrollingFour":
+            Metodos_Accion.x_NaivLoopUnrollingFour()
+        elif metodo == "WinogradOriginal":
+            Metodos_Accion.x_WinogradOriginal()
+        elif metodo == "WinogradScaled":
+            Metodos_Accion.x_WinogradScaled()
+        elif metodo == "StrassenNaiv":
+            Metodos_Accion.x_StrassenNaiv()
+        elif metodo == "StrassenWinograd":
+            Metodos_Accion.x_StrassenWinograd()
+        elif metodo == "III.3 Sequential block":
             Metodos_Accion.x_lll_3SequentialBlock()
-
+        elif metodo == "III.4 Parallel Block":
+            Metodos_Accion.x_lll_4ParallelBlock()
+        elif metodo == "III.5 Enhanced Parallel Block":
+            Metodos_Accion.x_III_5_Enhanced_Parallel_Block()
+        elif metodo == "IV.3 Sequential block":
+            Metodos_Accion.x_lV_3SequentialBlock_()
+        elif metodo == "IV.4 Parallel Block":
+            Metodos_Accion.x_IV_4ParallelBlock()
+        elif metodo == "IV.5 Enhanced Parallel Block":
+            Metodos_Accion.x_IV_5_Enhanced_Parallel_Block()
+        elif metodo == "V.3 Sequential block":
+            Metodos_Accion.x_v_3SequentialBlock()
+        elif metodo == "V.4 Parallel Block":
+            Metodos_Accion.x_v_4ParallelBlock()
     except Exception as e:
             raise RuntimeError(str(e))
 

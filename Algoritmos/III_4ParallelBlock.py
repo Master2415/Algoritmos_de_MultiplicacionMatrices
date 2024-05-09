@@ -1,29 +1,39 @@
 import math
-from multiprocessing import Pool
+import numpy as np
+import threading
+import multiprocessing
 
 
-def lll_4_parallel_block(matrizA, matrizB, size):
-    # Calcula el tamaño de bloque
+def lll_4ParallelBlock(matrizA, matrizB, size):
+    # Calcula el tamaño de bloque basado en la raíz cuadrada del tamaño total.
     bsize = int(math.sqrt(size))
-    # Crea la matriz de resultados
-    matrizResultado = [[0.0] * size for _ in range(size)]
+    # Crea una matriz para almacenar el resultado de la multiplicación.
+    matrizResultado = np.zeros((size, size))
 
-    # Define una función para procesar un bloque
-    def process_block(i1):
-        for i1 in range(0, size, bsize):
+    # Función que ejecuta la multiplicación de bloques en paralelo
+    def multiplicar_bloques(threadIndex):
+        nonlocal matrizResultado
+        for i1 in range(threadIndex * bsize, size, bsize * threads_count):
             for j1 in range(0, size, bsize):
                 for k1 in range(0, size, bsize):
-                    # Itera dentro de cada bloque
                     for i in range(i1, min(i1 + bsize, size)):
                         for j in range(j1, min(j1 + bsize, size)):
                             for k in range(k1, min(k1 + bsize, size)):
-                                # Calcula la multiplicación de matrices en cada elemento
                                 matrizResultado[i][j] += matrizA[i][k] * matrizB[k][j]
 
-    # Define el número de procesos a utilizar (puedes ajustar esto según tu máquina)
-    num_processes = 4  # Ejemplo: utilizar 4 procesos
+    # Obtiene la cantidad de núcleos de procesamiento disponibles
+    threads_count = min(threading.active_count(), multiprocessing.cpu_count())
+    threads = []
 
-    # Crea un pool de procesos y ejecuta la función de procesamiento para cada bloque
-    with Pool(num_processes) as pool:
-        pool.map(process_block, range(num_processes))
+    # Inicia los hilos para procesamiento paralelo
+    for t in range(threads_count):
+        thread = threading.Thread(target=multiplicar_bloques, args=(t,))
+        thread.start()  # Inicia el hilo
+        threads.append(thread)
+
+    # Espera a que todos los hilos terminen su trabajo
+    for thread in threads:
+        thread.join()  # Espera a que el hilo termine
+
+    return matrizResultado
 
